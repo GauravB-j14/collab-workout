@@ -1,0 +1,197 @@
+[
+  {
+    "name": "Full Body Blast",
+    "exercises": [
+      {
+        "name": "Jumping Jacks",
+        "duration": 45,
+        "rest": 15
+      },
+      {
+        "name": "Push-Ups",
+        "duration": 40,
+        "rest": 20
+      },
+      {
+        "name": "Squats",
+        "duration": 45,
+        "rest": 15
+      },
+      {
+        "name": "Burpees",
+        "duration": 30,
+        "rest": 30
+      },
+      {
+        "name": "Plank",
+        "duration": 45,
+        "rest": 15
+      },
+      {
+        "name": "Mountain Climbers",
+        "duration": 40,
+        "rest": 20
+      },
+      {
+        "name": "Lunges",
+        "duration": 45,
+        "rest": 15
+      },
+      {
+        "name": "High Knees",
+        "duration": 30,
+        "rest": 15
+      }
+    ]
+  },
+  {
+    "name": "Core Crusher",
+    "exercises": [
+      {
+        "name": "Crunches",
+        "duration": 40,
+        "rest": 15
+      },
+      {
+        "name": "Plank",
+        "duration": 50,
+        "rest": 20
+      },
+      {
+        "name": "Bicycle Crunches",
+        "duration": 40,
+        "rest": 15
+      },
+      {
+        "name": "Leg Raises",
+        "duration": 35,
+        "rest": 20
+      },
+      {
+        "name": "Russian Twists",
+        "duration": 40,
+        "rest": 15
+      },
+      {
+        "name": "Flutter Kicks",
+        "duration": 35,
+        "rest": 20
+      }
+    ]
+  },
+  {
+    "name": "HIIT Cardio",
+    "exercises": [
+      {
+        "name": "Burpees",
+        "duration": 30,
+        "rest": 15
+      },
+      {
+        "name": "Jump Squats",
+        "duration": 30,
+        "rest": 15
+      },
+      {
+        "name": "High Knees",
+        "duration": 30,
+        "rest": 15
+      },
+      {
+        "name": "Tuck Jumps",
+        "duration": 25,
+        "rest": 20
+      },
+      {
+        "name": "Speed Skaters",
+        "duration": 30,
+        "rest": 15
+      },
+      {
+        "name": "Box Jumps (imaginary)",
+        "duration": 30,
+        "rest": 15
+      },
+      {
+        "name": "Sprint in Place",
+        "duration": 30,
+        "rest": 20
+      }
+    ]
+  },
+  {
+    "name": "Upper Body Strength",
+    "exercises": [
+      {
+        "name": "Push-Ups",
+        "duration": 40,
+        "rest": 20
+      },
+      {
+        "name": "Diamond Push-Ups",
+        "duration": 30,
+        "rest": 20
+      },
+      {
+        "name": "Tricep Dips",
+        "duration": 35,
+        "rest": 20
+      },
+      {
+        "name": "Pike Push-Ups",
+        "duration": 30,
+        "rest": 20
+      },
+      {
+        "name": "Arm Circles",
+        "duration": 40,
+        "rest": 15
+      },
+      {
+        "name": "Plank Shoulder Taps",
+        "duration": 35,
+        "rest": 20
+      }
+    ]
+  },
+  {
+    "name": "Stretch & Recover",
+    "exercises": [
+      {
+        "name": "Neck Rolls",
+        "duration": 30,
+        "rest": 10
+      },
+      {
+        "name": "Shoulder Stretch",
+        "duration": 30,
+        "rest": 10
+      },
+      {
+        "name": "Quad Stretch",
+        "duration": 30,
+        "rest": 10
+      },
+      {
+        "name": "Hamstring Stretch",
+        "duration": 30,
+        "rest": 10
+      },
+      {
+        "name": "Child's Pose",
+        "duration": 40,
+        "rest": 10
+      },
+      {
+        "name": "Cat-Cow Stretch",
+        "duration": 40,
+        "rest": 10
+      },
+      {
+        "name": "Pigeon Pose",
+        "duration": 40,
+        "rest": 10
+      }
+    ]
+  }
+]
