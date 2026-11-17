@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Workout Together 🏋️</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏋️</text></svg>">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- ═══════════════  THEME TOGGLE  ═══════════════ -->
+  <button id="btn-theme" class="theme-toggle" title="Toggle light/dark mode">
+    <span class="theme-icon-dark">🌙</span>
+    <span class="theme-icon-light">☀️</span>
+  </button>
+  <!-- ═══════════════  LANDING / LOBBY  ═══════════════ -->
+  <div id="screen-lobby" class="screen active">
+    <header class="hero">
+      <div class="hero-icon">🏋️</div>
+      <h1>Workout Together</h1>
+      <p class="tagline">Create a room. Invite friends. Crush it together.</p>
+    </header>
+
+    <!-- Name input -->
+    <div class="card name-card">
+      <label for="inp-name">Your Name</label>
+      <input id="inp-name" type="text" placeholder="e.g. Alex" maxlength="20" autocomplete="off" />
+    </div>
+
+    <!-- Tabs: Join / Create -->
+    <div class="tabs">
+      <button class="tab active" data-tab="join">Join a Room</button>
+      <button class="tab" data-tab="create">Create a Room</button>
+    </div>
+
+    <!-- JOIN panel -->
+    <div id="panel-join" class="tab-panel active">
+      <div id="room-list" class="room-list">
+        <div class="empty-state">
+          <span class="empty-icon">📡</span>
+          <p>No open rooms yet — create one!</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CREATE panel -->
+    <div id="panel-create" class="tab-panel">
+      <div class="card">
+        <label for="inp-room-name">Room Name</label>
+        <input id="inp-room-name" type="text" placeholder="e.g. Morning Burn 🔥" maxlength="30" autocomplete="off" />
+
+        <label>Choose a Workout</label>
+        <div id="template-list" class="template-list"></div>
+
+        <label for="inp-max">Max Participants</label>
+        <input id="inp-max" type="number" value="8" min="2" max="20" />
+
+        <button id="btn-create" class="btn btn-primary btn-block">Create Room</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════  WAITING ROOM  ═══════════════ -->
+  <div id="screen-waiting" class="screen">
+    <div class="room-header">
+      <button id="btn-leave" class="btn btn-ghost btn-sm">← Leave</button>
+      <div>
+        <h2 id="room-title"></h2>
+        <span id="room-code" class="room-code"></span>
+      </div>
+    </div>
+
+    <div class="workout-preview card">
+      <h3 id="workout-name"></h3>
+      <p class="preview-hint">Click any exercise to see how it's done</p>
+      <div id="exercise-preview" class="exercise-chips"></div>
+    </div>
+
+    <h4 class="section-title">Participants</h4>
+    <div id="participants-waiting" class="participant-grid"></div>
+
+    <div class="waiting-actions">
+      <button id="btn-ready" class="btn btn-accent btn-block">I'm Ready ✋</button>
+      <button id="btn-start" class="btn btn-primary btn-block hidden">Start Workout 🚀</button>
+    </div>
+  </div>
+
+  <!-- ═══════════════  ACTIVE WORKOUT  ═══════════════ -->
+  <div id="screen-workout" class="screen">
+    <div class="workout-top-bar">
+      <button id="btn-leave-workout" class="btn btn-ghost btn-sm">← Leave</button>
+      <span id="workout-progress" class="progress-text"></span>
+      <button id="btn-pause" class="btn btn-ghost btn-sm">⏸️</button>
+    </div>
+
+    <div class="exercise-display">
+      <div id="label-phase" class="phase-label">EXERCISE</div>
+      <h2 id="exercise-name" class="exercise-name">Push-Ups</h2>
+      
+      <!-- 2D Coach Canvas -->
+      <div class="coach-container">
+        <canvas id="coach-canvas" width="220" height="150"></canvas>
+      </div>
+
+      <button id="btn-how-to" class="btn btn-how-to" title="How to do this exercise">❓ How To</button>
+      <div id="timer-ring" class="timer-ring">
+        <svg viewBox="0 0 120 120">
+          <circle class="ring-bg" cx="60" cy="60" r="54" />
+          <circle id="ring-progress" class="ring-fg" cx="60" cy="60" r="54" />
+        </svg>
+        <span id="timer-text" class="timer-text">45</span>
+      </div>
+      <div id="next-up" class="next-up"></div>
+    </div>
+
+    <!-- Reactions -->
+    <div class="reaction-bar">
+      <button class="reaction-btn" data-emoji="🔥">🔥</button>
+      <button class="reaction-btn" data-emoji="💪">💪</button>
+      <button class="reaction-btn" data-emoji="😤">😤</button>
+      <button class="reaction-btn" data-emoji="🎉">🎉</button>
+      <button class="reaction-btn" data-emoji="😅">😅</button>
+    </div>
+    <div id="reaction-canvas" class="reaction-canvas"></div>
+
+    <!-- Participants strip -->
+    <div id="participants-workout" class="participant-strip"></div>
+
+    <!-- Chat -->
+    <div class="chat-box">
+      <div id="chat-messages" class="chat-messages"></div>
+      <div class="chat-input-row">
+        <input id="inp-chat" type="text" placeholder="Say something…" maxlength="200" autocomplete="off" />
+        <button id="btn-send" class="btn btn-primary btn-sm">Send</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════  FINISHED  ═══════════════ -->
+  <div id="screen-finished" class="screen">
+    <div class="finish-hero">
+      <div class="finish-icon">🎉</div>
+      <h1>Workout Complete!</h1>
+      <p id="finish-workout-name"></p>
+    </div>
+    <div id="finish-stats" class="finish-stats"></div>
+    <button id="btn-back-lobby" class="btn btn-primary btn-block">Back to Lobby</button>
+  </div>
+
+  <!-- ═══════════════  EXERCISE HOW-TO MODAL  ═══════════════ -->
+  <div id="modal-howto" class="modal-overlay hidden">
+    <div class="modal-content">
+      <button id="btn-close-modal" class="modal-close">✕</button>
+      <div class="modal-emoji" id="modal-emoji">💪</div>
+      <h2 id="modal-title" class="modal-title">Push-Ups</h2>
+
+      <!-- 2D Coach Canvas in Modal -->
+      <div class="coach-container modal-coach">
+        <canvas id="modal-coach-canvas" width="220" height="150"></canvas>
+      </div>
+
+      <div id="modal-muscles" class="modal-muscles"></div>
+      <div class="modal-section">
+        <h3>📋 Steps</h3>
+        <ol id="modal-steps" class="modal-steps"></ol>
+      </div>
+      <div class="modal-section">
+        <h3>💡 Form Tips</h3>
+        <ul id="modal-tips" class="modal-tips"></ul>
+      </div>
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="animator.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
